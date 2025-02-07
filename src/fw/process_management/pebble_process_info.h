@@ -46,15 +46,16 @@ typedef enum {
   PROCESS_INFO_ROCKY_APP = 1 << 5,
 
   //! Bitmask, to store compile time platform
-  PROCESS_INFO_PLATFORM_MASK    = 0xf << 6,
+  PROCESS_INFO_PLATFORM_MASK       = 0xf << 6,
   //! SDK older than 4.2 doesn't store any value
-  PROCESS_INFO_PLATFORM_UNKNOWN = 0x0 << 6,
-  PROCESS_INFO_PLATFORM_APLITE  = 0x1 << 6,
+  PROCESS_INFO_PLATFORM_UNKNOWN    = 0x0 << 6,
+  PROCESS_INFO_PLATFORM_APLITE     = 0x1 << 6,
   //! Values that are actually added by SDK 4.2+
-  PROCESS_INFO_PLATFORM_BASALT  = 0x2 << 6,
-  PROCESS_INFO_PLATFORM_CHALK   = 0x3 << 6,
-  PROCESS_INFO_PLATFORM_DIORITE = 0x4 << 6,
-  PROCESS_INFO_PLATFORM_EMERY   = 0x5 << 6,
+  PROCESS_INFO_PLATFORM_BASALT     = 0x2 << 6,
+  PROCESS_INFO_PLATFORM_CHALK      = 0x3 << 6,
+  PROCESS_INFO_PLATFORM_DIORITE    = 0x4 << 6,
+  PROCESS_INFO_PLATFORM_EMERY      = 0x5 << 6,
+  PROCESS_INFO_PLATFORM_PINETIME   = 0x6 << 6,
 } PebbleProcessInfoFlags;
 
 //!   @} // group App

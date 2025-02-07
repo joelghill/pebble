@@ -52,6 +52,10 @@
 # if !defined(NRF52840_COMPATIBLE) && !defined(CMSIS_COMPATIBLE) && !defined(NRF5_COMPATIBLE)
 #  error "Source is incompatible with the target MCU"
 # endif
+#elif defined(MICRO_FAMILY_NRF52832)
+# if !defined(NRF52832_COMPATIBLE) && !defined(CMSIS_COMPATIBLE) && !defined(NRF5_COMPATIBLE)
+#  error "Source is incompatible with the target MCU"
+# endif
 # pragma GCC diagnostic push
 #  pragma GCC diagnostic ignored "-Wmissing-declarations"
 #  ifdef UNUSED

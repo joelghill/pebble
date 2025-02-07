@@ -277,6 +277,25 @@ board_capability_dicts = [
             'HAS_PMIC',
         },
     },
+        {
+        'boards': [ 'pinetime_v1' ],
+        'capabilities':
+        {
+            'HAS_APP_GLANCES',
+            'HAS_HEALTH_TRACKING',
+            'HAS_LAUNCHER4',
+            'HAS_SDK_SHELL4',
+            'HAS_SPRF_V3',
+            'HAS_TIMELINE_PEEK',
+            'HAS_VIBE_SCORES',
+            'HAS_WEATHER',
+            'HAS_PUTBYTES_PREACKING',
+            # 'HAS_MAGNETOMETER',
+            'HAS_BUILTIN_HRM',
+            'HAS_TOUCHSCREEN',
+            'USE_PARALLEL_FLASH',
+        },
+    },
 ]
 
 # Run through again and make sure all sets include only valid keys defined in

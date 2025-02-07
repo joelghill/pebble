@@ -564,7 +564,8 @@ def configure(conf):
         'silk_bb',
         'silk_bb2',
         'silk',
-        'asterix_vla_dvb1, pinetime_v1',
+        'asterix_vla_dvb1', 
+        'pinetime_v1',
     ):
         conf.env.JTAG = 'swd_ftdi'
     else:
@@ -593,6 +594,9 @@ def configure(conf):
     elif conf.is_cutts() or conf.is_robert():
         conf.env.PLATFORM_NAME = 'emery'
         conf.env.MIN_SDK_VERSION = 3
+    elif conf.is_pinetime():
+        conf.env.PLATFORM_NAME = 'pinetime'
+        conf.env.MIN_SDK_VERSION = 2
     else:
         conf.fatal('No platform specified for {}!'.format(conf.options.board))
 
@@ -607,6 +611,8 @@ def configure(conf):
         conf.env.MICRO_FAMILY = 'STM32F7'
     elif conf.is_asterix():
         conf.env.MICRO_FAMILY = 'NRF52840'
+    elif conf.is_pinetime():
+        conf.env.MICRO_FAMILY = 'NRF52832'
     else:
         conf.fatal('No micro family specified for {}!'.format(conf.options.board))
 
@@ -1016,6 +1022,8 @@ def size_resources(ctx):
     elif ctx.env.MICRO_FAMILY == 'STM32F7':
         max_size = 1024 * 1024
     elif ctx.env.MICRO_FAMILY == 'NRF52840':
+        max_size = 512 * 1024
+    elif ctx.env.MICRO_FAMILY == 'NRF52832':
         max_size = 512 * 1024
     else:
         max_size = 256 * 1024
@@ -1870,6 +1878,9 @@ def _check_firmware_image_size(ctx, path):
             max_firmware_size = (2048 - 32) * BYTES_PER_K
     elif ctx.env.MICRO_FAMILY == 'NRF52840':
         max_firmware_size = (1024 - 128) * BYTES_PER_K
+    elif ctx.env.MICRO_FAMILY == 'NRF52832':
+        # 512k of flash and 32k bootloader
+        max_firmware_size = (512 - 32) * BYTES_PER_K
     else:
         ctx.fatal(
             'Cannot check firmware size against unknown micro family "{}"'.format(
